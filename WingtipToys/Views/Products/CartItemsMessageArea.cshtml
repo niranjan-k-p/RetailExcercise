@@ -1,0 +1,32 @@
+﻿@model WingtipToys.ViewModels.ShoppingCartViewModel
+
+<script src="/Scripts/jquery-3.4.1.min.js"
+        type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    function ClearMessage() {
+        setTimeout(function () { $('.wrap').fadeOut(); }, 3000);
+    }
+
+    @if (ViewBag.Func != null)
+    {
+        @Html.Raw(ViewBag.Func)
+    }
+</script>
+
+@*TODO: Improve ui/css*@
+<div class="wrap">
+    <p>
+        <strong>"@(Model.NewCartItem.Product.ProductName)"</strong> added to your shopping cart!
+        You have the following items in your cart:
+        <ul>
+            @foreach (var item in Model.CartItems)
+            {
+                <li>
+                    <strong>@item.Product.ProductName'</strong>(@item.Quantity)'
+                </li>
+            }
+        </ul>
+    </p>
+</div>
